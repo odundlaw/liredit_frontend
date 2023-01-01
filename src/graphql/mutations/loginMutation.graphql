@@ -1,0 +1,15 @@
+type Login {
+  username: String
+  password: String
+}
+
+mutation Login($input: Login!) {
+  login(input: $input) {
+    data {
+      email
+      name
+      id
+    }
+    error
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "liredit",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "codegen": "graphql-codegen --config codegen.ts  --errors-only"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.3",
+    "@heroicons/react": "^2.0.13",
+    "formik": "^2.2.9",
+    "framer-motion": "^8.0.2",
+    "localforage": "^1.10.0",
+    "match-sorter": "^6.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.6.0",
+    "sort-by": "^0.0.2",
+    "urql": "^3.0.3",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@graphql-codegen/add": "^3.2.3",
+    "@graphql-codegen/cli": "2.16.2",
+    "@graphql-codegen/client-preset": "1.2.4",
+    "@graphql-codegen/typescript": "^2.8.5",
+    "@graphql-codegen/typescript-operations": "^2.5.11",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@graphql-codegen/typescript-urql": "^3.7.3",
+    "@graphql-tools/webpack-loader": "^6.7.1",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "autoprefixer": "^10.4.13",
+    "babel-plugin-import-graphql": "^2.8.1",
+    "change-case": "^4.1.2",
+    "graphql": "^16.6.0",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  }
+}
