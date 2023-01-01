@@ -3,7 +3,7 @@ type Login {
   password: String
 }
 
-mutation Login($input: Login!) {
+mutation Login($input: LoginParams!) {
   login(input: $input) {
     data {
       email

@@ -6,11 +6,7 @@ const config: CodegenConfig = {
   documents: "src/graphql/**/*.graphql",
   ignoreNoDocuments: true,
   config: {
-    withRefetchFn: true,
-    withHooks: true,
-    noGraphQLTag: false,
-    withHOC: false,
-    withComponent: false,
+    documentVariableSuffix: "test2",
   },
   generates: {
     "src/gql/": {

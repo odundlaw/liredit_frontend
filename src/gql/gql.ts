@@ -13,13 +13,18 @@ import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/
  * Therefore it is highly recommended to use the babel-plugin for production.
  */
 const documents = {
-    "mutation Login($input: Login!) {\n  login(input: $input) {\n    data {\n      email\n      name\n      id\n    }\n    error\n  }\n}": types.LoginDocument,
+    "mutation Login($input: LoginParams!) {\n  login(input: $input) {\n    data {\n      email\n      name\n      id\n    }\n    error\n  }\n}": types.Logintest2,
+    "query Me {\n  me {\n    email\n    username\n    id\n  }\n}": types.Metest2,
 };
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "mutation Login($input: Login!) {\n  login(input: $input) {\n    data {\n      email\n      name\n      id\n    }\n    error\n  }\n}"): (typeof documents)["mutation Login($input: Login!) {\n  login(input: $input) {\n    data {\n      email\n      name\n      id\n    }\n    error\n  }\n}"];
+export function graphql(source: "mutation Login($input: LoginParams!) {\n  login(input: $input) {\n    data {\n      email\n      name\n      id\n    }\n    error\n  }\n}"): (typeof documents)["mutation Login($input: LoginParams!) {\n  login(input: $input) {\n    data {\n      email\n      name\n      id\n    }\n    error\n  }\n}"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query Me {\n  me {\n    email\n    username\n    id\n  }\n}"): (typeof documents)["query Me {\n  me {\n    email\n    username\n    id\n  }\n}"];
 
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
