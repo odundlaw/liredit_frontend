@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect } from "react";
 import { Navigate } from "react-router";
 import useAuthState from "../../context/AuthContext/AuthState";
 import useModalState from "../../context/ModalContext/ModalState";
@@ -8,7 +8,11 @@ import LoginView, { LoginValues } from "./LoginView";
 function LoginContainer(): JSX.Element {
   const { toggleModal } = useModalState();
 
-  const { login: handleLoginSuccess, isLoggedIn, authUserData } = useAuthState();
+  const {
+    login: handleLoginSuccess,
+    isLoggedIn,
+    authUserData,
+  } = useAuthState();
 
   const [login, { loading, error, data }] = useLoginMutation();
 
@@ -20,12 +24,12 @@ function LoginContainer(): JSX.Element {
     });
   };
 
-  if (data?.login.data) {
-    handleLoginSuccess();
-  }
+  useEffect(() => {
+    if (data?.login?.data) toggleModal();
+  }, [data?.login?.data]);
 
   const memoAuthState = useMemo(() => {
-    return <Navigate to="/data" />;
+    return isLoggedIn ? <Navigate to="/data" /> : null;
   }, [isLoggedIn]);
 
   return (

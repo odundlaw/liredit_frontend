@@ -1,5 +1,5 @@
-import React, { useMemo, useCallback, useState } from "react";
-import { useMeQuery } from "../../gql/graphql";
+import React, { useMemo, useCallback, useState, useEffect } from "react";
+import { useLogoutMutation, useMeQuery } from "../../gql/graphql";
 import AuthContext, { AuthContextType } from "./AuthContext";
 
 interface AuthProviderProps {
@@ -7,16 +7,22 @@ interface AuthProviderProps {
 }
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const [logout] = useLogoutMutation();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { data } = useMeQuery();
 
   const logoutHandler = useCallback(() => {
+    logout();
     setIsLoggedIn(false);
   }, []);
 
   const loginHandler = useCallback(() => {
     setIsLoggedIn(true);
   }, []);
+
+  useEffect(() => {
+    data?.me ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  }, [data?.me]);
 
   const value = useMemo(
     () => ({
