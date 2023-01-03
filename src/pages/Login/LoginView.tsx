@@ -7,6 +7,7 @@ import InputWrapper from "../../hoc/InputWrapper";
 import FormInputs from "../../components/FormInputs";
 import Button from "../../components/Button";
 import FormErrors from "../../components/FormErrors";
+import { Link } from "react-router-dom";
 
 interface Login {
   loginHandler: (values: LoginValues) => void;
@@ -100,7 +101,20 @@ const LoginView: React.FC<Login> = ({
           </InputWrapper>
           <div className="px-2 py-1">
             <p className="text-sm text-gray-600">
-              Forget your username or Password?
+              Forget your{" "}
+              <Link
+                to="/forgot-username"
+                className="hover:underline transition-all duration-300 text-blue-500"
+              >
+                username
+              </Link>{" "}
+              or{" "}
+              <Link
+                to="/forgot-password"
+                className="hover:underline transition-all duration-300 text-blue-500"
+              >
+                Password?
+              </Link>
             </p>
           </div>
           <Button
@@ -111,7 +125,15 @@ const LoginView: React.FC<Login> = ({
             Login
           </Button>
           <div className="px-2">
-            <p className="text-sm text-gray-600">New to Liredit? SignUp</p>
+            <p className="text-sm text-gray-600">
+              New to Liredit?{" "}
+              <Link
+                to="/signup"
+                className="hover:underline transition-all duration-300 text-blue-500"
+              >
+                SignUp
+              </Link>
+            </p>
           </div>
         </form>
       </div>

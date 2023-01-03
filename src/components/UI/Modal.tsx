@@ -16,13 +16,13 @@ const Modal: React.FC<ModalProps> = ({ children, showModal }) => {
       {showModal && (
         <motion.div className="w-full h-full fixed bg-black opacity-60 cursor-pointer z-40" />
       )}
-      <motion.div
+      <motion.nav
         className="z-50 fixed flex items-center justify-center w-full"
-        layout
-        style={{ top: showModal ? "0" : "-120%" }}
+        variants={{ open: { top: "0" }, closed: { top: "-1200px" } }}
+        animate={showModal ? "open" : "closed"}
       >
         {children}
-      </motion.div>
+      </motion.nav>
     </React.Fragment>
   );
   return ReactDOM.createPortal(modal, element);

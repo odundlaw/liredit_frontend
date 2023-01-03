@@ -3,6 +3,7 @@ import ErrorPage from "./pages/Error/ErrorPage";
 import Home from "./pages/Home/Home";
 import Layout from "./pages/Layout/Layout";
 import LoginContainer from "./pages/Login/LoginContainer";
+import SignupContainer from "./pages/SignUp/SignupContainer";
 
 export const router = createBrowserRouter([
   {
@@ -14,5 +15,5 @@ export const router = createBrowserRouter([
       index: true
     }],
   },
-  { element: <LoginContainer />, path: "/login" },
+  { element: <SignupContainer />, path: "/signup" },
 ]);

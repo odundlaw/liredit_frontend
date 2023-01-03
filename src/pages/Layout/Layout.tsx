@@ -3,11 +3,15 @@ import { Outlet } from "react-router-dom";
 import Header from "../../components/UI/Header";
 import Modal from "../../components/UI/Modal";
 import SideBar from "../../components/UI/SideBar";
+import useAuthState from "../../context/AuthContext/AuthState";
 import useModalState from "../../context/ModalContext/ModalState";
 import LoginContainer from "../Login/LoginContainer";
 
 const Layout = () => {
   const { showModal, toggleModal } = useModalState();
+  const { authUserData } = useAuthState();
+
+  console.log(authUserData);
 
   useLayoutEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;
@@ -18,9 +22,11 @@ const Layout = () => {
 
   return (
     <React.Fragment>
-      <Modal onclick={toggleModal} showModal={showModal}>
-        <LoginContainer />
-      </Modal>
+      {showModal ? (
+        <Modal onclick={toggleModal} showModal={showModal}>
+          <LoginContainer />
+        </Modal>
+      ) : null}
       <div className="h-auto w-full">
         <Header toggleModal={toggleModal} />
         <SideBar />

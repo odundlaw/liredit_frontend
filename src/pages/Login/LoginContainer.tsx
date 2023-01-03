@@ -14,12 +14,22 @@ function LoginContainer(): JSX.Element {
     authUserData,
   } = useAuthState();
 
-  const [login, { loading, error, data }] = useLoginMutation();
+  const [login, { loading, error, data, reset }] = useLoginMutation();
 
   const loginHandler = (values: LoginValues) => {
     login({
       variables: {
         input: values,
+      },
+      update(cache, { data }) {
+        if (!data?.login.data) return;
+        cache.modify({
+          fields: {
+            me() {
+              return { me: data.login.data };
+            },
+          },
+        });
       },
     });
   };

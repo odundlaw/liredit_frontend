@@ -12,8 +12,17 @@ const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const { data } = useMeQuery();
 
   const logoutHandler = useCallback(() => {
-    logout();
-    setIsLoggedIn(false);
+    logout({
+      update(cache) {
+        cache.modify({
+          fields: {
+            me() {
+              return { me: null };
+            },
+          },
+        });
+      },
+    });
   }, []);
 
   const loginHandler = useCallback(() => {
