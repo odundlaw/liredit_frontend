@@ -14,6 +14,7 @@ interface Login {
   toggleModal: () => void;
   loading: boolean;
   error: string | null | undefined;
+  onGoogleClick: () => void;
 }
 
 export type LoginValues = {
@@ -26,6 +27,7 @@ const LoginView: React.FC<Login> = ({
   toggleModal,
   loading,
   error,
+  onGoogleClick,
 }) => {
   const formik = useFormik<LoginValues>({
     initialValues: { username: "", password: "" },
@@ -49,6 +51,7 @@ const LoginView: React.FC<Login> = ({
         <Button
           type="button"
           className="px-2 py-1.5 rounded-full border border-slate-300 w-full hover:bg-slate-100 hover:transition-all hover:duration-300"
+          onClick={onGoogleClick}
         >
           Continue with Google
         </Button>

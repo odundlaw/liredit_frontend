@@ -4,7 +4,7 @@ import Button from "../components/Button";
 
 interface Wrapper {
   children: React.ReactNode;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 const FormWrapper: React.FC<Wrapper> = ({ children, onClose }): JSX.Element => {

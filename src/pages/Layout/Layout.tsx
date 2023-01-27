@@ -9,9 +9,6 @@ import LoginContainer from "../Login/LoginContainer";
 
 const Layout = () => {
   const { showModal, toggleModal } = useModalState();
-  const { authUserData } = useAuthState();
-
-  console.log(authUserData);
 
   useLayoutEffect(() => {
     const body = document.querySelector("body") as HTMLBodyElement;

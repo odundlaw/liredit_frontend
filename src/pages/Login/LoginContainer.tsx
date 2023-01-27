@@ -8,13 +8,13 @@ import LoginView, { LoginValues } from "./LoginView";
 function LoginContainer(): JSX.Element {
   const { toggleModal } = useModalState();
 
-  const {
-    login: handleLoginSuccess,
-    isLoggedIn,
-    authUserData,
-  } = useAuthState();
+  const { isLoggedIn } = useAuthState();
 
   const [login, { loading, error, data, reset }] = useLoginMutation();
+
+  const googleAuthHandler = () => {
+    window.open("http://localhost:8080/api/auth/google", "_self");
+  };
 
   const loginHandler = (values: LoginValues) => {
     login({
@@ -50,6 +50,7 @@ function LoginContainer(): JSX.Element {
         toggleModal={toggleModal}
         error={data?.login?.error}
         loading={loading}
+        onGoogleClick={googleAuthHandler}
       />
     </React.Fragment>
   );
